@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Staff Profile">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Add new Staff" />
+                  <MenuItem mnemonicParsing="false" text="Update staff Information" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Vehicle">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Manage staff Info" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Reservation">
+            <items>
+              <MenuItem mnemonicParsing="false" text="New Reservation" />
+                  <MenuItem mnemonicParsing="false" text="Manage reservation" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Accounts">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Manage Accounts" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="FAQ">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <HBox prefHeight="42.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#showMain" text="Go to Home" />
+         </children></HBox>
+   </bottom>
+   <right>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="About the Company">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Contact">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </right>
+</BorderPane>

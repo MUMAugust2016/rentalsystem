@@ -6,4 +6,6 @@ public interface DataAccess {
 	void readAll(Dao dao) throws SQLException;
 	boolean write(Dao dao) throws SQLException;
 	Object readOne(Dao dao) throws SQLException;
+	boolean delete(Dao dao) throws SQLException;
+	void readPartOfRecord(Dao dao) throws SQLException;
 }

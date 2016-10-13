@@ -1,107 +1,62 @@
 package com.abccompany.carrentalsystem.model;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Vehicle {
 	private static final long serialVersionUID = 100010L;
 
-	private Integer plate;
+	private IntegerProperty plate;
 
-	private int numberOfSeats;
+	private IntegerProperty numberOfSeats;
 
 	private String carType;
 
-	private double dailyPrice;
+	private DoubleProperty dailyPrice;
 
-	private String make;
+	private StringProperty make;
 
-	private String transmission;
+	private IntegerProperty manufacturedYear;
 
-	private int manufacturedYear;
-
-	private byte[] photo;
-
-	public Vehicle() {
-	}
-
-	public Vehicle(Integer plate) {
-		this.plate = plate;
+	public Vehicle(String carType) {
+		this.carType = carType;
 	}
 
 	public Vehicle(Integer plate, int numberOfSeats, String carType,
-			double dailyPrice, String make,
-			int manufacturedYear, byte[] photo) {
-		this.plate = plate;
-		this.numberOfSeats = numberOfSeats;
+			double dailyPrice, String make, int manufacturedYear) {
+		this.plate = new SimpleIntegerProperty(plate);
+		this.numberOfSeats = new SimpleIntegerProperty(numberOfSeats);
 		this.carType = carType;
-		this.dailyPrice = dailyPrice;
-		this.make = make;
-		this.manufacturedYear = manufacturedYear;
-		this.photo = photo;
+		this.dailyPrice = new SimpleDoubleProperty(dailyPrice);
+		this.make = new SimpleStringProperty(make);
+		this.manufacturedYear = new SimpleIntegerProperty(manufacturedYear);
 	}
 
-	public Integer getPlate() {
-		return plate;
-	}
-
-	public void setPlate(Integer plate) {
-		this.plate = plate;
-	}
-
-	public int getNumberOfSeats() {
-		return numberOfSeats;
-	}
-
-	public void setNumberOfSeats(int numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
-	}
-
-	public String getCarType() {
-		return carType;
-	}
-
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
-
-	public double getDailyPrice() {
+	public DoubleProperty getDailyPrice() {
 		return dailyPrice;
 	}
 
-	public void setDailyPrice(double dailyPrice) {
-		this.dailyPrice = dailyPrice;
-	}
-
-	public String getMake() {
+	public StringProperty getMake() {
 		return make;
 	}
 
-	public void setMake(String make) {
-		this.make = make;
-	}
-
-	
-	public int getManufacturedYear() {
+	public IntegerProperty getManufacturedYear() {
 		return manufacturedYear;
 	}
 
-	public void setManufacturedYear(int manufacturedYear) {
-		this.manufacturedYear = manufacturedYear;
+	public IntegerProperty getPlate() {
+		return plate;
 	}
 
-	public byte[] getPhoto() {
-		return photo;
+	public IntegerProperty getNumberOfSeats() {
+		return numberOfSeats;
 	}
 
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
-
-	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (plate != null ? plate.hashCode() : 0);
-		return hash;
-	}
-
+	
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are
@@ -110,20 +65,36 @@ public class Vehicle {
 			return false;
 		}
 		Vehicle other = (Vehicle) object;
-		if ((this.plate == null && other.plate != null)
-				|| (this.plate != null && !this.plate.equals(other.plate))) {
-			return false;
-		}
-		return true;
+		return plate == other.plate;
 	}
 
 	@Override
 	public String toString() {
 		return "Vehicle [plate=" + plate + ", numberOfSeats=" + numberOfSeats
 				+ ", carType=" + carType + ", dailyPrice=" + dailyPrice
-				+ ", make=" + make + ", transmission=" + transmission
-				+ ", manufacturedYear=" + manufacturedYear + "]";
+				+ ", make=" + make + ", transmission=" + ", manufacturedYear="
+				+ manufacturedYear + "]";
 	}
 
+	//mapping to jfx columns
+	public StringProperty plateProperty() {
+		return new SimpleStringProperty(carType);
+	}
+	public StringProperty numberOfSeatsProperty() {
+		return new SimpleStringProperty(carType);
+	}
+	public StringProperty carTypeProperty() {
+		return new SimpleStringProperty(carType);
+	}
+	public DoubleProperty dailyPriceProperty() {
+		return dailyPrice;
+	}
+	public StringProperty makeProperty(){
+		return make;
+	}
+	public IntegerProperty manufacturedYearProperty(){
+		return manufacturedYear;
+	}
 	
+
 }

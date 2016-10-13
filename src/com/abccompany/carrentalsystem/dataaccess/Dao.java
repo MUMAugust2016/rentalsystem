@@ -10,5 +10,7 @@ public interface Dao {
 	public void unpackResultSet(ResultSet rs) throws SQLException;
 	public List<?> getResults();
 	public String getSqlOne();
+	public String getDeleteQuery();
+	public String getSqlSubElements();
 	
 }

@@ -17,9 +17,7 @@ public class DataAccessSubSystem implements DataAccess {
 		private static final String PASSWORD = "root";
 		private static Connection conn = null;
 
-		private ConnectManager() {
-		}
-
+		
 		/**
 		 * Illustrates an implementation of singliton design pattern
 		 * 
@@ -72,6 +70,10 @@ public class DataAccessSubSystem implements DataAccess {
 			isInserted = true;
 		} catch (Exception e) {
 			// put logger here
+			
+		
+			System.out.println("error happened");
+			e.printStackTrace();
 		}
 		return isInserted;
 	}
@@ -100,5 +102,46 @@ public class DataAccessSubSystem implements DataAccess {
 		}
 
 		return rs;
+	}
+
+	@Override
+	public boolean delete(Dao dao) throws SQLException {
+		boolean isDeleted = false;
+		String query = dao.getDeleteQuery();
+		Connection con = null;
+		try {
+			con = (new ConnectManager()).getConnection();
+			Statement stmt = con.createStatement();
+			stmt.execute(query);
+			isDeleted = true;
+		} catch (Exception e) {
+			System.out.println("deletion not completed");
+			e.printStackTrace();
+		}
+		return isDeleted;
+	}
+
+	@Override
+	public void readPartOfRecord(Dao dao) throws SQLException {
+		String query = dao.getSqlSubElements();
+		Connection con = null;
+		try {
+			con = (new ConnectManager()).getConnection();
+
+			Statement stmt = con.createStatement();
+
+			System.out.println("the query: " + query);
+			ResultSet rs = stmt.executeQuery(query);
+			dao.unpackResultSet(rs);
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					// do nothing
+				}
+			}
+		}
+		
 	}
 }

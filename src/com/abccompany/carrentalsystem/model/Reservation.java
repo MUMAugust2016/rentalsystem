@@ -1,21 +1,20 @@
 package com.abccompany.carrentalsystem.model;
 
-import java.awt.List;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Reservation {
 
 	private static final long serialVersionUID = 100008L;
+	
+	private static Integer confirmationNumber = 100000;
 
-	private Integer confirmationNumber;
+	private Date pickupDate;
 
-	private LocalDate pickupDate;
-
-	private LocalDate dropoffDate;
+	private Date dropoffDate;
 
 	private Vehicle vehicle;
 
-	private List transactionList;
 
 	public Reservation() {
 	}
@@ -24,9 +23,10 @@ public class Reservation {
 		this.confirmationNumber = confirmationNumber;
 	}
 
-	public Reservation(Integer confirmationNumber, LocalDate pickupDate,
-			LocalDate dropoffDate) {
-		this.confirmationNumber = confirmationNumber;
+	public Reservation(Integer confirmationNumber, Date pickupDate,
+			Date dropoffDate) {
+		confirmationNumber ++;
+
 		this.pickupDate = pickupDate;
 		this.dropoffDate = dropoffDate;
 	}
@@ -39,19 +39,19 @@ public class Reservation {
 		this.confirmationNumber = confirmationNumber;
 	}
 
-	public LocalDate getPickupDate() {
+	public Date getPickupDate() {
 		return pickupDate;
 	}
 
-	public void setPickupDate(LocalDate pickupDate) {
+	public void setPickupDate(Date pickupDate) {
 		this.pickupDate = pickupDate;
 	}
 
-	public LocalDate getDropoffDate() {
+	public Date getDropoffDate() {
 		return dropoffDate;
 	}
 
-	public void setDropoffDate(LocalDate dropoffDate) {
+	public void setDropoffDate(Date dropoffDate) {
 		this.dropoffDate = dropoffDate;
 	}
 
@@ -63,14 +63,6 @@ public class Reservation {
 		this.vehicle = vehicle;
 	}
 
-	public List getTransactionList() {
-		return transactionList;
-	}
-
-	public void setTransactionList(List transactionList) {
-		this.transactionList = transactionList;
-	}
-
 	@Override
 	public int hashCode() {
 		int hash = 0;
@@ -78,6 +70,7 @@ public class Reservation {
 		return hash;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are
